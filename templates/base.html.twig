@@ -10,7 +10,17 @@
     </head>
     <body>
         {% include "layout/layout.html.twig" %}
-        {% block body %}{% endblock %}
+        <main role="main">
+            <div class="container">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+           
+                {% block body %}{% endblock %}
+            </div>
+        </main>
             {{ encore_entry_script_tags('app') }}
         {% block javascripts %}{% endblock %}
     </body>
